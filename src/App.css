@@ -37,14 +37,10 @@
   }
 }
 
-/* .root {
-  color: red;
-} */
-
 .searchBox {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
   width: 50%;
-  background-color: #61dafb;
   text-align: center;
 }
