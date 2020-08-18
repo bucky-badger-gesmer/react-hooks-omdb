@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import './App.css';
+import Button from './shared_components/Button.js';
+import ImgMediaCard from './ImgMediaCard.js';
+// import './App.css';
 
 export default function App() {
   // state:
@@ -22,10 +24,22 @@ export default function App() {
   // helper methods:
   const getResults = () => {
     const result = JSON.parse(queriedItem);
+    console.log('result', result);
+
+    const poster = result.Poster === 'N/A' ? 'No image available' : <img src={result.Poster} />;
+
     return (
-      <div>
+      <div className="found-title">
         <h1>{result.Title} ({result.Year})</h1>
-        <img src={result.Poster} />
+        {poster}
+
+        <Button size={"sm"} backgroundColor="purple" color="gold">Small Button</Button>
+        <Button size={"lg"}>Smaller Button</Button>
+        <Button size={"xs"}>Big Button</Button>
+
+        {/* <Button variant="danger" size={"sm"} backgroundColor="purple" color="gold">Small Button</Button>
+        <Button variant="primary" size={"lg"}>Smaller Button</Button>
+        <Button variant="warning" size={"xs"}>Big Button</Button> */}
       </div>
     );
   };
@@ -35,6 +49,9 @@ export default function App() {
       <div className="searchBox">
         <input type="text" placeholder="Search for a title..." value={query} onChange={onInputChange.bind(this)} />
         <button onClick={onSearchClick.bind(this)}>Search</button>
+        <div style={{ flex: 1, justifyContent: 'center', alignItems: 'center', marginLeft: 'auto', marginRight: 'auto', width: '50%', backgroundColor: 'green' }}>
+          {/* <ImgMediaCard /> */}
+        </div>
       </div>
       <hr />
       <div className="searchResults">
